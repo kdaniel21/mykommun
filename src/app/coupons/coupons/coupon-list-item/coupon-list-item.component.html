@@ -1,0 +1,20 @@
+<ng-container *ngIf="{ hasPurchased: hasPurchased$ | async } as data">
+  <tui-island class="tui-space_vertical-4">
+    <div>
+      <div>
+        <p class="tui-island__category">{{ coupon.couponType }}</p>
+        <h3 class="tui-island__title">{{ coupon.name }}</h3>
+        <p class="tui-island__content">Discount: {{ (discountPercentage * 100).toFixed(0) }}%</p>
+        <a class="tui-island__content" [href]="coupon.website">More information</a>
+      </div>
+
+      <figure *ngIf="data.hasPurchased" class="tui-island__figure tui-space_horizontal-2">
+        <tui-svg src="tuiIconCheckCircle"></tui-svg>
+      </figure>
+    </div>
+
+    <button tuiButton size="s" class="tui-space_top-3" [disabled]="data.hasPurchased" (click)="onBuyCoupon()">
+      Buy for {{ price }} points
+    </button>
+  </tui-island>
+</ng-container>

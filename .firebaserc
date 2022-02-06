@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "mykommun-51147": {
+      "hosting": {
+        "mykommun": [
+          "mykommun-51147"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "mykommun-51147"
+  }
+}

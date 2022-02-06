@@ -1,0 +1,34 @@
+::ng-deep tui-root {
+  height: 100vh;
+  width: 100vw;
+}
+
+#layout-container {
+  display: grid;
+  grid-template-columns: min(35vw, 21rem) auto;
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: auto;
+    grid-template-rows: 6.5rem auto;
+  }
+
+  #outlet-container {
+    padding: 3rem 2rem;
+    height: calc(100vh - 6rem);
+
+    @media screen and (max-width: 768px) {
+      padding: 1rem;
+      padding-top: 0;
+      width: calc(100vw - 2rem);
+      height: calc(100vh - 7.5rem);
+    }
+
+    router-outlet::ng-deep + * {
+      display: block;
+
+      height: 100%;
+      width: 100%;
+      overflow-y: auto;
+    }
+  }
+}

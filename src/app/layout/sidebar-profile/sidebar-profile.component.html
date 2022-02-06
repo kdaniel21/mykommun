@@ -1,0 +1,6 @@
+<ng-container *ngIf="user$ | async as user">
+  <div id="sidebar-profile" class="tui-space_horizontal-3 tui-space_top-4">
+    <tui-avatar [text]="user.displayName || user.email" size="xl" [rounded]="true"></tui-avatar>
+    <h3 class="tui-text_h5 tui-space_top-2">{{ user.displayName || user.email }}</h3>
+  </div>
+</ng-container>

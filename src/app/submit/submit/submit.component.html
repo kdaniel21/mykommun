@@ -1,0 +1,40 @@
+<div class="stepper tui-space_bottom-5">
+  <tui-stepper [(activeItemIndex)]="activeItemIndex">
+    <button tuiStep [state]="activeItemIndex === 0 ? 'normal' : 'pass'">Describe the problem</button>
+
+    <button tuiStep>Upload photo</button>
+  </tui-stepper>
+</div>
+
+<form [formGroup]="submitForm" (ngSubmit)="onSubmit()">
+  <ng-container *ngIf="activeItemIndex === 0">
+    <h1 class="tui-form__header">Describe the problem</h1>
+
+    <div class="tui-form__row">
+      <tui-input formControlName="subject">Subject</tui-input>
+    </div>
+
+    <tui-text-area formControlName="description" class="tui-space_vertical-3">Description of the problem</tui-text-area>
+
+    <div class="tui-form__button tui-space_horizontal-0">
+      <button
+        type="button"
+        tuiButton
+        [disabled]="submitForm.get('subject').invalid || submitForm.get('description').invalid"
+        (click)="onNextStep()"
+      >
+        Next step
+      </button>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="activeItemIndex === 1">
+    <h1 class="tui-form__header">Take a photo of the problem</h1>
+
+    <app-single-image-upload (fileUploaded)="onImageUpload($event)"></app-single-image-upload>
+
+    <div class="tui-form__button tui-space_horizontal-0 tui-space_top-3">
+      <button type="submit" tuiButton [disabled]="submitForm.invalid">Submit</button>
+    </div>
+  </ng-container>
+</form>

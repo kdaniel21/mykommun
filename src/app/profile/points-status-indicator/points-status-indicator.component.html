@@ -1,0 +1,9 @@
+<ng-container *ngIf="{ pointsCount: pointsCount$ | async } as data">
+  <h2 class="tui-text__h2">Your current balance:</h2>
+
+  <h1 class="tui-text__h1">{{ data.pointsCount }} points</h1>
+
+  <a tuiButton icon="tuiIconCard" class="tui-space_top-5" type="button" [routerLink]="['/', 'coupons']">
+    Redeem points
+  </a>
+</ng-container>

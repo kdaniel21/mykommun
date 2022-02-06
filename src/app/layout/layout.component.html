@@ -1,0 +1,16 @@
+<tui-root>
+  <div
+    *ngIf="{ isMobile: isMobile$ | async } as data"
+    id="layout-container"
+  >
+    <app-mobile-navbar *ngIf="data.isMobile; else desktopSidebar"></app-mobile-navbar>
+
+    <ng-template #desktopSidebar>
+      <app-desktop-sidebar></app-desktop-sidebar>
+    </ng-template>
+
+    <div id="outlet-container">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</tui-root>

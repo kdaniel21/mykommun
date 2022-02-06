@@ -1,0 +1,21 @@
+<ng-container *ngIf="{ pointsCount: pointsCount$ | async, couponListItems: couponListItems$ | async } as data">
+  <h1 class="taiga-header__h1">Get coupons</h1>
+
+  <tui-select [formControl]="selectedCouponTypeControl" [valueContent]="couponTypeSelectItem">
+    Choose coupon type
+
+    <tui-data-list-wrapper
+      *tuiDataList
+      [items]="couponTypeItems"
+      [itemContent]="couponTypeSelectItem"
+    ></tui-data-list-wrapper>
+
+    <ng-template #couponTypeSelectItem let-item>{{ item.name }}</ng-template>
+  </tui-select>
+
+  <h3 class="tui-header__3">Your current balance: {{ data.pointsCount }} points</h3>
+
+  <ng-container *ngFor="let couponListItem of data.couponListItems">
+    <app-coupon-list-item [coupon]="couponListItem"></app-coupon-list-item>
+  </ng-container>
+</ng-container>
